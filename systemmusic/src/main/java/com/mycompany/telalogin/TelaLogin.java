@@ -1,6 +1,7 @@
 package com.mycompany.telalogin;
 
     import com.mycompany.user.DadosLogin;
+    import com.mycompany.sqlcommand.SqlConsultaUsuario;
 
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -90,6 +91,9 @@ public class TelaLogin extends javax.swing.JFrame {
         final String senha = txtSenha.getSelectedText();
         
         DadosLogin dadosLogin = new DadosLogin(login, senha);
+        SqlConsultaUsuario sqlConsultaUsuario = new SqlConsultaUsuario(dadosLogin);
+        
+        sqlConsultaUsuario.consultaUsuario();
     }//GEN-LAST:event_btnLoginMouseClicked
 
     /**
