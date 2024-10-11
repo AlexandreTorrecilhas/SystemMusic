@@ -2,14 +2,7 @@ package com.mycompany.user;
 
 
 
-public class DadosLogin {
-    
-    public DadosLogin(){
-    
-    }
-    
-    public DadosLogin(String login, String senha){
-        
-    }
+public record DadosLogin (String login, String senha) {
+
     
 }
