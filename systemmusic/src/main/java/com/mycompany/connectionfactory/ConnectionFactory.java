@@ -1,31 +1,39 @@
 package com.mycompany.connectionfactory;
 
+    import com.mycompany.user.DadosLogin;
+
     import java.sql.DriverManager;
     import java.sql.Connection;
     import java.sql.SQLException;
     import java.sql.PreparedStatement;
     import java.sql.ResultSet;
+    import javax.swing.JOptionPane;
 
 public class ConnectionFactory {
     
-    final String DB_URL = "jdbc:mysql://localhost:3306/music_project";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/music_project";
+    private String senha;
     
-    String login = " ";
-    String senha = " ";
+    DadosLogin dadosLogin;
     
-    public ConnectionFactory(String login, String senha){
-        this.login = login;
-        this.senha = senha;
+    public ConnectionFactory(DadosLogin dadosLogin){
+        this.dadosLogin = dadosLogin;
     }
     
     public Connection getConexao(){
-        
+               
         try{
-            Connection conn = DriverManager.getConnection(DB_URL, this.login, this.senha);
+            
+            this.senha = new String(dadosLogin.senha());
+            
+            JOptionPane.showMessageDialog(null, "Conexão feita com sucesso");
+            Connection conn = DriverManager.getConnection(DB_URL, this.dadosLogin.login(), this.senha);
             return conn;
           
         }catch(SQLException e){
             throw new RuntimeException(e);
+        }finally{
+            this.senha = null;
         }
         
     }

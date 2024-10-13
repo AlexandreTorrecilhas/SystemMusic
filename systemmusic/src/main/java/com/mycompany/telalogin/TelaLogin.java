@@ -1,7 +1,7 @@
 package com.mycompany.telalogin;
 
     import com.mycompany.user.DadosLogin;
-    import com.mycompany.sqlcommand.SqlConsultaUsuario;
+    import com.mycompany.connectionfactory.ConnectionFactory;
 
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -39,6 +39,11 @@ public class TelaLogin extends javax.swing.JFrame {
                 btnLoginMouseClicked(evt);
             }
         });
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,12 +58,13 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addComponent(txtLogin))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
+                                .addGap(24, 24, 24)
                                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -74,10 +80,8 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogin)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
-
-        btnLogin.getAccessibleContext().setAccessibleName("Login");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -87,14 +91,19 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLoginActionPerformed
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
+
+        
+    }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         final String login = txtLogin.getText();
-        final String senha = txtSenha.getSelectedText();
+        char[] senha = txtSenha.getPassword();
         
         DadosLogin dadosLogin = new DadosLogin(login, senha);
-        SqlConsultaUsuario sqlConsultaUsuario = new SqlConsultaUsuario(dadosLogin);
         
-        sqlConsultaUsuario.consultaUsuario();
-    }//GEN-LAST:event_btnLoginMouseClicked
+        ConnectionFactory connectionFactory = new ConnectionFactory(dadosLogin);
+        connectionFactory.getConexao();
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
