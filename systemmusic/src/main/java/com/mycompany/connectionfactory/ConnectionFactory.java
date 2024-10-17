@@ -26,7 +26,6 @@ public class ConnectionFactory {
             
             this.senha = new String(dadosLogin.senha());
             
-            JOptionPane.showMessageDialog(null, "Conexão feita com sucesso");
             Connection conn = DriverManager.getConnection(DB_URL, this.dadosLogin.login(), this.senha);
             return conn;
           
