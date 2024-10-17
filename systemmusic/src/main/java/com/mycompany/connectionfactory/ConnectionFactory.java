@@ -18,7 +18,7 @@ public class ConnectionFactory {
     public Connection getConexao(DadosLogin dadosLogin){
         Connection conn;
         String login = dadosLogin.login();
-        String senha = hashSenha(dadosLogin.senha());
+        String senha =  hashSenha(dadosLogin.senha());
         
         try{
             conn = DriverManager.getConnection(DB_URL, login, senha);
