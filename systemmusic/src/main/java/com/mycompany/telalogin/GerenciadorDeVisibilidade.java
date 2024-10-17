@@ -13,24 +13,9 @@ public class GerenciadorDeVisibilidade {
     private ConnectionFactory connectionFactory;
     
     public GerenciadorDeVisibilidade(DadosLogin dadosLogin){
-        this.dadosLogin = dadosLogin;
-        this.connectionFactory = new ConnectionFactory(dadosLogin);
+
     }
     
-    public boolean definiVisibilidade(){
-        
-        try{
-            conn = connectionFactory.getConexao();
-            
-            if(!conn.isClosed()){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }catch(SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
+
     
 }

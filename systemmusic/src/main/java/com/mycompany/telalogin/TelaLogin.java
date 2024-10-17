@@ -4,6 +4,8 @@ package com.mycompany.telalogin;
     import com.mycompany.connectionfactory.ConnectionFactory;
     import com.mycompany.telalogin.GerenciadorDeVisibilidade;
 
+    import java.sql.SQLException;
+
 public class TelaLogin extends javax.swing.JFrame {
 
 
@@ -88,8 +90,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void desligaTela(DadosLogin dadosLogin){
-        GerenciadorDeVisibilidade gerenciadorDeVisibilidade = new GerenciadorDeVisibilidade(dadosLogin);
-        this.setVisible(gerenciadorDeVisibilidade.definiVisibilidade());
+       
     }
     
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
@@ -102,11 +103,17 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        final String login = txtLogin.getText();
+        String login = txtLogin.getText();
         char[] senha = txtSenha.getPassword();
-        
         DadosLogin dadosLogin = new DadosLogin(login, senha);
-        desligaTela(dadosLogin);
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        
+        try{
+            connectionFactory.getConexao(dadosLogin);
+        }catch(RuntimeException e){
+            throw new RuntimeException (e);
+        }
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     public static void main(String args[]) {

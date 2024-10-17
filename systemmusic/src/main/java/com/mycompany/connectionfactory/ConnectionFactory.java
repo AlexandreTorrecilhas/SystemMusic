@@ -1,6 +1,7 @@
 package com.mycompany.connectionfactory;
 
     import com.mycompany.user.DadosLogin;
+    import org.mindrot.jbcrypt.BCrypt;
 
     import java.sql.DriverManager;
     import java.sql.Connection;
@@ -11,30 +12,29 @@ package com.mycompany.connectionfactory;
 
 public class ConnectionFactory {
     
-    private final String DB_URL = "jdbc:mysql://localhost:3306/music_project";
-    private String senha;
+    public ConnectionFactory(){};
+    final String DB_URL = "jdbc:mysql://localhost:3306/music_project";
     
-    DadosLogin dadosLogin;
-    
-    public ConnectionFactory(DadosLogin dadosLogin){
-        this.dadosLogin = dadosLogin;
-    }
-    
-    public Connection getConexao(){
-               
-        try{
-            
-            this.senha = new String(dadosLogin.senha());
-            
-            Connection conn = DriverManager.getConnection(DB_URL, this.dadosLogin.login(), this.senha);
-            return conn;
-          
-        }catch(SQLException e){
-            throw new RuntimeException(e);
-        }finally{
-            this.senha = null;
-        }
+    public Connection getConexao(DadosLogin dadosLogin){
+        Connection conn;
+        String login = dadosLogin.login();
+        String senha = hashSenha(dadosLogin.senha());
         
-    }
+        try{
+            conn = DriverManager.getConnection(DB_URL, login, senha);
+            JOptionPane.showMessageDialog(null, "Conexão feita com sucesso");
+            return conn;
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para conectar-se ao sistema");
+            throw new RuntimeException (e);
+        }
+    };
     
+    public String hashSenha(char[] senhaOriginal){
+        String senha = new String(senhaOriginal);
+        String hashSenha = BCrypt.hashpw(senha, BCrypt.gensalt());
+        senha = null;
+        System.out.println(hashSenha);
+        return hashSenha;
+    }
 }
