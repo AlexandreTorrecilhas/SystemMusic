@@ -18,7 +18,8 @@ public class ConnectionFactory {
     public Connection getConexao(DadosLogin dadosLogin){
         Connection conn;
         String login = dadosLogin.login();
-        String senha = hashSenha(dadosLogin.senha());
+        String senha = new String(dadosLogin.senha());
+        System.out.println(senha);
         
         try{
             conn = DriverManager.getConnection(DB_URL, login, senha);
@@ -28,13 +29,8 @@ public class ConnectionFactory {
             JOptionPane.showMessageDialog(null, "Você não tem permissão para conectar-se ao sistema");
             throw new RuntimeException (e);
         }
+        finally{
+            
+        }
     };
-    
-    public String hashSenha(char[] senhaOriginal){
-        String senha = new String(senhaOriginal);
-        String hashSenha = BCrypt.hashpw(senha, BCrypt.gensalt());
-        senha = null;
-        System.out.println(hashSenha);
-        return hashSenha;
-    }
 }
