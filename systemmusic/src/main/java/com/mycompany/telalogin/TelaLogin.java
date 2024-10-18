@@ -89,8 +89,14 @@ public class TelaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void desligaTela(DadosLogin dadosLogin){
-       
+    public void conectarNoBanco (DadosLogin dadosLogin){
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        
+        try{
+            connectionFactory.getConexao(dadosLogin);
+        }catch(RuntimeException e){
+            throw new RuntimeException (e);
+        }
     }
     
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
@@ -106,14 +112,7 @@ public class TelaLogin extends javax.swing.JFrame {
         String login = txtLogin.getText();
         char[] senha = txtSenha.getPassword();
         DadosLogin dadosLogin = new DadosLogin(login, senha);
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        
-        try{
-            connectionFactory.getConexao(dadosLogin);
-        }catch(RuntimeException e){
-            throw new RuntimeException (e);
-        }
-        
+        conectarNoBanco(dadosLogin);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     public static void main(String args[]) {

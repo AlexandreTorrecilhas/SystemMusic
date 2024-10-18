@@ -11,3 +11,5 @@ CREATE TABLE student_login(
 
 ALTER TABLE student_login
 	DROP COLUMN user_password;
+    
+GRANT ALL ON music_project TO "administrador"@"localhost";
