@@ -1,36 +1,43 @@
 package com.mycompany.connectionfactory;
 
     import com.mycompany.user.DadosLogin;
-    import org.mindrot.jbcrypt.BCrypt;
 
     import java.sql.DriverManager;
     import java.sql.Connection;
     import java.sql.SQLException;
-    import java.sql.PreparedStatement;
-    import java.sql.ResultSet;
     import javax.swing.JOptionPane;
 
 public class ConnectionFactory {
     
-    public ConnectionFactory(){};
-    final String DB_URL = "jdbc:mysql://localhost:3306/music_project";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/music_project";
+    private Connection conn;
+    private String login = " ";
+    private String senha = " ";
+    
+    public ConnectionFactory(){
+    
+    }
     
     public Connection getConexao(DadosLogin dadosLogin){
+
         Connection conn;
         String login = dadosLogin.login();
         String senha = new String(dadosLogin.senha());
         System.out.println(senha);
+
+        this.login = dadosLogin.login();
+        this.senha = new String(dadosLogin.senha());
+
         
         try{
-            conn = DriverManager.getConnection(DB_URL, login, senha);
-            JOptionPane.showMessageDialog(null, "Conexão feita com sucesso");
-            return conn;
+            this.conn = DriverManager.getConnection(DB_URL, this.login, this.senha);
+            JOptionPane.showMessageDialog(null, "Login feito com sucesso");
+            return this.conn;
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Você não tem permissão para conectar-se ao sistema");
+            JOptionPane.showMessageDialog(null, "O usuário não tem permissão para login");
             throw new RuntimeException (e);
+        }finally{
+            this.senha = null;
         }
-        finally{
-            
-        }
-    };
+    }
 }
