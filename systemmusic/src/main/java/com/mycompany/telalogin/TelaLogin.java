@@ -2,7 +2,6 @@ package com.mycompany.telalogin;
 
     import com.mycompany.user.DadosLogin;
     import com.mycompany.connectionfactory.ConnectionFactory;
-    import com.mycompany.telalogin.GerenciadorDeVisibilidade;
 
     import java.sql.SQLException;
 
