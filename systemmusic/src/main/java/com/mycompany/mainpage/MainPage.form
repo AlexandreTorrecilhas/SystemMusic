@@ -24,8 +24,10 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="487" max="32767" attributes="0"/>
+              <EmptySpace pref="999" max="32767" attributes="0"/>
               <Component id="lblLoginNome" min="-2" pref="76" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblLogin" min="-2" pref="140" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -34,14 +36,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblLoginNome" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace pref="475" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="lblLogin" max="32767" attributes="0"/>
+                  <Component id="lblLoginNome" pref="30" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="507" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblLoginNome">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLogin">
     </Component>
   </SubComponents>
 </Form>

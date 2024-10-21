@@ -11,8 +11,7 @@ public class MainPage extends javax.swing.JFrame {
     }
     
     public MainPage(DadosLogin dadosLogin){
-        this.dadosLogin = dadosLogin;
-        lblLoginNome.setText(dadosLogin.login());
+        lblLogin.setText(dadosLogin.login());
     }
 
 
@@ -21,6 +20,7 @@ public class MainPage extends javax.swing.JFrame {
     private void initComponents() {
 
         lblLoginNome = new javax.swing.JLabel();
+        lblLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -29,16 +29,20 @@ public class MainPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(487, Short.MAX_VALUE)
+                .addContainerGap(999, Short.MAX_VALUE)
                 .addComponent(lblLoginNome, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblLoginNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(475, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblLoginNome, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addContainerGap(507, Short.MAX_VALUE))
         );
 
         pack();
@@ -80,6 +84,7 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblLoginNome;
     // End of variables declaration//GEN-END:variables
 }

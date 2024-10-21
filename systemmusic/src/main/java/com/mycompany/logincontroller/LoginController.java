@@ -19,7 +19,6 @@ public class LoginController {
     
     public LoginController(TelaLogin telaLogin, MainPage mainPage){
         this.telaLogin = telaLogin;
-        this.mainPage = mainPage;
         this.telaLogin.setVisible(true);
         
         this.telaLogin.btnLogin.addActionListener(
@@ -28,6 +27,7 @@ public class LoginController {
                         this.dadosLogin = telaLogin.getDadosLogin();
                         this.conn = this.connectionFactory.getConexao(dadosLogin);
                         if(!conn.isClosed()){
+                            this.mainPage = new MainPage(this.dadosLogin);
                             this.telaLogin.setVisible(false);
                             this.mainPage.setVisible(true);
                         }
