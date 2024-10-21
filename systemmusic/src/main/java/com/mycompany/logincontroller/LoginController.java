@@ -24,11 +24,12 @@ public class LoginController {
         
         this.telaLogin.btnLogin.addActionListener(
                 e ->{
-                     this.dadosLogin = telaLogin.getDadosLogin();
-                     this.conn = this.connectionFactory.getConexao(dadosLogin);
-                     try{
-                         if(!conn.isClosed()){
-                         JOptionPane.showMessageDialog(null, "Worked");
+                    try{
+                        this.dadosLogin = telaLogin.getDadosLogin();
+                        this.conn = this.connectionFactory.getConexao(dadosLogin);
+                        if(!conn.isClosed()){
+                            this.telaLogin.setVisible(false);
+                            this.mainPage.setVisible(true);
                         }
                      }catch(SQLException ex){
                          JOptionPane.showMessageDialog(null, "Não foi possível conectar-se ao banco");
