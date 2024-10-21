@@ -7,6 +7,7 @@ package com.mycompany.telalogin;
 
 public class TelaLogin extends javax.swing.JFrame {
 
+    protected DadosLogin dadosLogin;
 
     public TelaLogin() {
         initComponents();
@@ -88,20 +89,11 @@ public class TelaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    public void conectarNoBanco (DadosLogin dadosLogin){
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        
-        try{
-            connectionFactory.getConexao(dadosLogin);
-        }catch(RuntimeException e){
-            throw new RuntimeException (e);
-        }
+    public DadosLogin getDadosLogin(){
+        this.dadosLogin = new DadosLogin(txtLogin.getText(), txtSenha.getPassword());
+        return dadosLogin;
     }
-
-    
-
-    
+  
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
        
     }//GEN-LAST:event_txtLoginActionPerformed
