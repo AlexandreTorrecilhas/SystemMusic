@@ -19,14 +19,8 @@ public class ControladorPaginaPrincipal {
         this.mainPage = mainPage;
         this.jCadastroAluno = jCadastroAluno;
         this.conn = conn;
-        this.btnCadastrar = jCadastroAluno.getBtnCadastrar();
+        
     }
     
-    public void teste(){
-        this.btnCadastrar.addActionListener(
-            e -> {
-                JOptionPane.showMessageDialog(null, "Worked");
-            }
-        );
-    }
+    
 }

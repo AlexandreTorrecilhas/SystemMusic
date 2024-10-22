@@ -4,6 +4,7 @@ package com.mycompany.controllers;
     import java.sql.Connection;
     import java.sql.SQLException;
 
+    import com.mycompany.controladorvisibilidade.ControladorVisibilidade;
     import com.mycompany.telalogin.TelaLogin;
     import com.mycompany.mainpage.MainPage;
     import com.mycompany.connectionfactory.ConnectionFactory;
@@ -15,21 +16,21 @@ public class LoginController {
     private TelaLogin telaLogin;
     private MainPage mainPage;
     private DadosLogin dadosLogin;
+    private ControladorVisibilidade controladorVisibilidade = new ControladorVisibilidade();
     private ConnectionFactory connectionFactory = new ConnectionFactory();
     
-    public LoginController(TelaLogin telaLogin, MainPage mainPage){
+    public LoginController(TelaLogin telaLogin){
         this.telaLogin = telaLogin;
-        this.telaLogin.setVisible(true);
         
         this.telaLogin.btnLogin.addActionListener(
                 e ->{
                     try{
                         this.dadosLogin = telaLogin.getDadosLogin();
-                        this.conn = this.connectionFactory.getConexao(dadosLogin);
+                        this.conn = this.connectionFactory.getConexao(this.dadosLogin);
                         if(!conn.isClosed()){
-                            this.mainPage = new MainPage(this.dadosLogin);
-                            this.telaLogin.setVisible(false);
-                            this.mainPage.setVisible(true);
+                            this.mainPage = new MainPage(dadosLogin);
+                            controladorVisibilidade.InicializacaoTelaPrincipal(this.mainPage);
+                            this.telaLogin.dispose();
                         }
                      }catch(SQLException ex){
                          JOptionPane.showMessageDialog(null, "Não foi possível conectar-se ao banco");
