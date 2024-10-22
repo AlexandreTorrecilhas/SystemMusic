@@ -2,7 +2,7 @@ package com.mycompany.systemmusic;
 
     import com.mycompany.telalogin.TelaLogin;
     import com.mycompany.mainpage.MainPage;
-    import com.mycompany.logincontroller.LoginController;
+    import com.mycompany.controllers.LoginController;
 
 public class index {
 

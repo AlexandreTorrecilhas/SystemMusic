@@ -23,7 +23,6 @@ public class ConnectionFactory {
         Connection conn;
         String login = dadosLogin.login();
         String senha = new String(dadosLogin.senha());
-        System.out.println(senha);
 
         this.login = dadosLogin.login();
         this.senha = new String(dadosLogin.senha());

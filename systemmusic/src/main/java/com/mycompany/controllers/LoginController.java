@@ -1,4 +1,4 @@
-package com.mycompany.logincontroller;
+package com.mycompany.controllers;
 
     import javax.swing.JOptionPane;
     import java.sql.Connection;
