@@ -15,10 +15,8 @@ public class ControladorPaginaPrincipal {
     JButton btnCadastrar;
     Connection conn;
     
-    public ControladorPaginaPrincipal(MainPage mainPage, JCadastroAluno jCadastroAluno, Connection conn){
+    public ControladorPaginaPrincipal(MainPage mainPage){
         this.mainPage = mainPage;
-        this.jCadastroAluno = jCadastroAluno;
-        this.conn = conn;
         
     }
     

@@ -30,5 +30,6 @@ public class ControladorVisibilidade {
     public void InicializacaoTelaPrincipal(MainPage mainPage){
         this.mainPage = mainPage;
         this.mainPage.setVisible(true);
+        this.controladorPaginaPrincipal = new ControladorPaginaPrincipal(this.mainPage);
     }
 }
