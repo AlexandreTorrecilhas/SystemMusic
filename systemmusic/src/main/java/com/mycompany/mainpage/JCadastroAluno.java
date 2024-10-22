@@ -1,6 +1,7 @@
 package com.mycompany.mainpage;
 
     import java.sql.Date;
+    import javax.swing.JButton;
 
 public class JCadastroAluno extends javax.swing.JFrame {
 
@@ -9,6 +10,11 @@ public class JCadastroAluno extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnCadastrar(){
+        initComponents();
+        return btnCadastrar;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -4,11 +4,16 @@ package com.mycompany.controladorvisibilidade;
     import com.mycompany.telalogin.TelaLogin;
     import com.mycompany.controllers.*;
 
+    import java.sql.Connection;
+
 public class ControladorVisibilidade {
     
     protected TelaLogin telaLogin;
     protected MainPage mainPage;
     protected LoginController loginController;
+    protected ControladorPaginaPrincipal controladorPaginaPrincipal;
+    
+    protected Connection conn;
     
     public ControladorVisibilidade(){}
     
