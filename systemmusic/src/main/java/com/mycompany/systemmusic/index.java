@@ -13,7 +13,7 @@ public class index {
         
         TelaLogin telaLogin = new TelaLogin();
         MainPage mainPage = new MainPage();
-        controladorVisibilidade.InicializacaoTelaLogin(telaLogin);
+        controladorVisibilidade.inicializacaoTelaLogin(telaLogin);
         
     }
     

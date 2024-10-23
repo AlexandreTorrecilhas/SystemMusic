@@ -3,9 +3,12 @@ package com.mycompany.mainpage;
     import com.mycompany.user.DadosLogin;
     import javax.swing.JButton;
 
+    import java.sql.Connection;
+
 public class MainPage extends javax.swing.JFrame {
     
     private DadosLogin dadosLogin;
+    private Connection conn;
 
     public MainPage() {
         initComponents();

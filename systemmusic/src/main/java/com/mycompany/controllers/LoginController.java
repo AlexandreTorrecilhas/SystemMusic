@@ -29,7 +29,7 @@ public class LoginController {
                         this.conn = this.connectionFactory.getConexao(this.dadosLogin);
                         if(!conn.isClosed()){
                             this.mainPage = new MainPage(dadosLogin);
-                            controladorVisibilidade.InicializacaoTelaPrincipal(this.mainPage);
+                            controladorVisibilidade.inicializacaoTelaPrincipal(this.mainPage, this.conn);
                             this.telaLogin.dispose();
                         }
                      }catch(SQLException ex){

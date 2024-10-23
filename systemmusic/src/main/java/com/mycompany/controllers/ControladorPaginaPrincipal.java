@@ -2,7 +2,7 @@ package com.mycompany.controllers;
 
     import javax.swing.JOptionPane;
     import javax.swing.JButton;
-
+    import com.mycompany.controladorvisibilidade.ControladorVisibilidade;
     import com.mycompany.mainpage.MainPage;
     import com.mycompany.mainpage.JCadastroAluno;
 
@@ -10,18 +10,22 @@ package com.mycompany.controllers;
 
 public class ControladorPaginaPrincipal {
     
-    MainPage mainPage;
-    JCadastroAluno jCadastroAluno;
-    JButton btnCadastrar;
-    Connection conn;
+    private MainPage mainPage;
+    private JCadastroAluno jCadastroAluno;
+    private JButton btnCadastrar;
+    private Connection conn;
+    private ControladorVisibilidade controladorVisibilidade = new ControladorVisibilidade();
     
-    public ControladorPaginaPrincipal(MainPage mainPage){
+    public ControladorPaginaPrincipal(MainPage mainPage, Connection conn){
         this.mainPage = mainPage;
+        this.conn = conn;
         this.btnCadastrar = mainPage.getBtnCadastrar();
         
         this.btnCadastrar.addActionListener(
             e ->{
-                JOptionPane.showMessageDialog(null, "Worked");
+                this.mainPage.dispose();
+                this.jCadastroAluno = new JCadastroAluno();
+                this.controladorVisibilidade.inicializacaoJCadastroAluno(jCadastroAluno, conn);
             }
         );
     }
