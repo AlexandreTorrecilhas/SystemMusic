@@ -1,6 +1,7 @@
 package com.mycompany.mainpage;
 
     import com.mycompany.user.DadosLogin;
+    import javax.swing.JButton;
 
 public class MainPage extends javax.swing.JFrame {
     
@@ -14,6 +15,10 @@ public class MainPage extends javax.swing.JFrame {
         initComponents();
         lblLogin.setText(dadosLogin.login());
     }
+    
+    public JButton getBtnCadastrar(){
+        return btnCadastrar;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -21,11 +26,11 @@ public class MainPage extends javax.swing.JFrame {
 
         lblLoginNome = new javax.swing.JLabel();
         lblLogin = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Cadastrar Aluno");
+        btnCadastrar.setText("Cadastrar Aluno");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -36,7 +41,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(lblLoginNome, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -48,7 +53,7 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(lblLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblLoginNome, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(244, Short.MAX_VALUE))
         );
 
@@ -91,7 +96,7 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblLoginNome;
     // End of variables declaration//GEN-END:variables

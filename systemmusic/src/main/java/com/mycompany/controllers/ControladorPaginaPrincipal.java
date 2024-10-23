@@ -17,7 +17,13 @@ public class ControladorPaginaPrincipal {
     
     public ControladorPaginaPrincipal(MainPage mainPage){
         this.mainPage = mainPage;
+        this.btnCadastrar = mainPage.getBtnCadastrar();
         
+        this.btnCadastrar.addActionListener(
+            e ->{
+                JOptionPane.showMessageDialog(null, "Worked");
+            }
+        );
     }
     
     
