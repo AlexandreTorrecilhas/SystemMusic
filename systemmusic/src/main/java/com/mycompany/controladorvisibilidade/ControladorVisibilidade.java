@@ -14,6 +14,7 @@ public class ControladorVisibilidade {
     protected JCadastroAluno jCadastroAluno;
     protected LoginController loginController;
     protected ControladorPaginaPrincipal controladorPaginaPrincipal;
+    protected ContJCadastroAluno contJCadastroAluno;
     protected Connection conn;
     
     public ControladorVisibilidade(){}
@@ -36,5 +37,6 @@ public class ControladorVisibilidade {
         this.jCadastroAluno = jCadastroAluno;
         this.conn = conn;
         this.jCadastroAluno.setVisible(true);
+        this.contJCadastroAluno = new ContJCadastroAluno();
     }
 }

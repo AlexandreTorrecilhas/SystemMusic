@@ -3,6 +3,7 @@ package com.mycompany.mainpage;
     import java.sql.Date;
     import javax.swing.JButton;
     import javax.swing.JTextField;
+    import javax.swing.JComboBox;
 
 public class JCadastroAluno extends javax.swing.JFrame {
 
@@ -22,6 +23,18 @@ public class JCadastroAluno extends javax.swing.JFrame {
     
     public JTextField getTxtDataNascimento(){
         return this.txtDataNascimento;
+    }
+    
+    public JTextField getTxtTelefone(){
+        return this.txtTelefone;
+    }
+    
+    public JTextField getTxtEmail(){
+        return this.txtEmail;
+    }
+    
+    public JComboBox getcBoxInstrumento(){
+        return this.cBoxInstrumento;
     }
     
     @SuppressWarnings("unchecked")

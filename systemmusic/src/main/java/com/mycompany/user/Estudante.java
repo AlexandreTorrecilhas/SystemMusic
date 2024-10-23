@@ -4,7 +4,7 @@ package com.mycompany.user;
 
 public class Estudante {
     
-    protected boolean situacao;
+    protected boolean situacao = true;
     String nome;
     Date dataNascimento;
     String instrumentoDesejado;
@@ -15,6 +15,14 @@ public class Estudante {
         this.dataNascimento = dataNascimento;
         this.instrumentoDesejado = instrumentoDesejado;
         this.email = email;
+    }
+    
+    public void setSituacao(boolean situacao){
+        this.situacao = situacao;
+    }
+    
+    public boolean getSituacao(){
+        return this.situacao;
     }
     
     public void setNome(String nome){
