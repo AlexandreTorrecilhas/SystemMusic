@@ -8,9 +8,10 @@ public class Estudante {
     String nome;
     Date dataNascimento;
     String instrumentoDesejado;
+    String telefone;
     String email;
     
-    public Estudante(String nome, Date dataNascimento, String instrumentoDesejado, String email){
+    public Estudante(String nome, Date dataNascimento, String instrumentoDesejado, String telefone ,String email){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.instrumentoDesejado = instrumentoDesejado;
