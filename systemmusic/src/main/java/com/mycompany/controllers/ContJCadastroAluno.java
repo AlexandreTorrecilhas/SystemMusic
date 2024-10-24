@@ -13,20 +13,21 @@ package com.mycompany.controllers;
 public class ContJCadastroAluno {
     
     private Estudante estudante;
-    private JCadastroAluno jCadastroAluno = new JCadastroAluno();
-    private JButton btnCadastrar = jCadastroAluno.getBtnCadastrar();
-    private JTextField txtNome = jCadastroAluno.getTxtNome();
-    private JTextField  txtDataNascimento = jCadastroAluno.getTxtDataNascimento();
-    private JTextField txtTelefone = jCadastroAluno.getTxtTelefone();
-    private JTextField txtEmail = jCadastroAluno.getTxtEmail();
-    private JComboBox cBoxInstrumento = jCadastroAluno.getcBoxInstrumento();
+    private JCadastroAluno jCadastroAluno;
+    private JButton btnCadastrar;
+    //private JTextField txtNome = jCadastroAluno.getTxtNome();
+    //private JTextField  txtDataNascimento = jCadastroAluno.getTxtDataNascimento();
+    //private JTextField txtTelefone = jCadastroAluno.getTxtTelefone();
+    //private JTextField txtEmail = jCadastroAluno.getTxtEmail();
+    //private JComboBox cBoxInstrumento = jCadastroAluno.getcBoxInstrumento();
     
-    public ContJCadastroAluno(){
+    public ContJCadastroAluno(JCadastroAluno jCadastroAluno){
         
-        JOptionPane.showMessageDialog(null, "");
+        this.jCadastroAluno = jCadastroAluno;
+        this.btnCadastrar = jCadastroAluno.getBtnCadastrar();
         
         this.btnCadastrar.addActionListener(e ->{
-            JOptionPane.showMessageDialog(null, "Funcionou");
+            JOptionPane.showMessageDialog(null, "Worked");
         });
         
     }

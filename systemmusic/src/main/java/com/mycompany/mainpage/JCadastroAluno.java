@@ -13,7 +13,6 @@ public class JCadastroAluno extends javax.swing.JFrame {
     }
 
     public JButton getBtnCadastrar(){
-        initComponents();
         return btnCadastrar;
     }
     
