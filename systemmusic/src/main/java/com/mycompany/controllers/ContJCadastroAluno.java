@@ -42,24 +42,40 @@ public class ContJCadastroAluno {
     public ContJCadastroAluno(JCadastroAluno jCadastroAluno, Connection conn){
         
         this.jCadastroAluno = jCadastroAluno;
+        this.jCadastroAluno = jCadastroAluno;
         this.conn = conn;
         this.btnCadastrar = this.jCadastroAluno.getBtnCadastrar();
         this.btnMenuPrincipal = this.jCadastroAluno.getBtnMenuPrincipal();
-        
-        this.btnCadastrar.addActionListener(e ->{
             
+        this.btnCadastrar.addActionListener(e ->{
             this.btnCadastrar = jCadastroAluno.getBtnCadastrar();
             this.txtNome = jCadastroAluno.getTxtNome();
             this.txtDataNascimento = jCadastroAluno.getTxtDataNascimento();
             this.txtTelefone = jCadastroAluno.getTxtTelefone();
             this.txtEmail = jCadastroAluno.getTxtEmail();
             this.cBoxInstrumento = jCadastroAluno.getcBoxInstrumento();
-            this.localDate = LocalDate.parse(txtDataNascimento.getText(), formato);
-            this.dataNascimento = Date.valueOf(localDate);
+            
+            try{
+                this.localDate = LocalDate.parse(txtDataNascimento.getText(), formato);
+                this.dataNascimento = Date.valueOf(localDate);
+            }catch(DateTimeParseException formatoData){
+                JOptionPane.showMessageDialog(null, "Por favor, informe a data no seguinte formato ex: 01/01/1990");
+                throw new RuntimeException (formatoData);
+            }
             
             this.estudante = new Estudante(txtNome.getText(), this.dataNascimento, cBoxInstrumento.getSelectedItem().toString(), txtTelefone.getText(), txtEmail.getText());
-            this.inserirEstudante = new InserirEstudante(this.estudante, this.conn);
             
+            try{
+                this.inserirEstudante = new InserirEstudante(this.estudante, this.conn); 
+            }catch(RuntimeException inserirEstudante){
+                throw new RuntimeException(inserirEstudante);
+            }finally{
+                this.txtNome.setText("");
+                this.txtDataNascimento.setText("");
+                this.txtTelefone.setText("");
+                this.txtEmail.setText("");
+                this.cBoxInstrumento.setSelectedIndex(0);
+            }
         });
         
         this.btnMenuPrincipal.addActionListener(e ->{
@@ -67,6 +83,5 @@ public class ContJCadastroAluno {
             this.jCadastroAluno.dispose();
             this.controladorVisibilidade.inicializacaoTelaPrincipal(this.mainPage, this.conn);
         });
-        
     }
 }
