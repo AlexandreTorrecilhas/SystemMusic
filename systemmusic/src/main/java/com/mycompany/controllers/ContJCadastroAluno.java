@@ -5,6 +5,7 @@ package com.mycompany.controllers;
     import com.mycompany.mainpage.JCadastroAluno;
     import com.mycompany.mainpage.MainPage;
     import com.mycompany.controladorvisibilidade.ControladorVisibilidade;
+    import com.mycompany.dao.InserirEstudante;
    //Importing swing classes
     import javax.swing.JOptionPane;
     import javax.swing.JButton;
@@ -21,6 +22,7 @@ package com.mycompany.controllers;
 
 public class ContJCadastroAluno {
     
+    private InserirEstudante inserirEstudante;
     private ControladorVisibilidade controladorVisibilidade = new ControladorVisibilidade();
     private MainPage mainPage = new MainPage();
     private Connection conn;
@@ -37,11 +39,12 @@ public class ContJCadastroAluno {
     private LocalDate localDate;
     private DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
-    public ContJCadastroAluno(JCadastroAluno jCadastroAluno){
+    public ContJCadastroAluno(JCadastroAluno jCadastroAluno, Connection conn){
         
-        this.btnCadastrar = jCadastroAluno.getBtnCadastrar();
         this.jCadastroAluno = jCadastroAluno;
-        this.btnMenuPrincipal = jCadastroAluno.getBtnMenuPrincipal();
+        this.conn = conn;
+        this.btnCadastrar = this.jCadastroAluno.getBtnCadastrar();
+        this.btnMenuPrincipal = this.jCadastroAluno.getBtnMenuPrincipal();
         
         this.btnCadastrar.addActionListener(e ->{
             
@@ -55,7 +58,8 @@ public class ContJCadastroAluno {
             this.dataNascimento = Date.valueOf(localDate);
             
             this.estudante = new Estudante(txtNome.getText(), this.dataNascimento, cBoxInstrumento.getSelectedItem().toString(), txtTelefone.getText(), txtEmail.getText());
-            JOptionPane.showMessageDialog(null, this.estudante.getNome());
+            this.inserirEstudante = new InserirEstudante(this.estudante, this.conn);
+            
         });
         
         this.btnMenuPrincipal.addActionListener(e ->{

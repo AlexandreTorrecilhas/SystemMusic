@@ -37,6 +37,6 @@ public class ControladorVisibilidade {
         this.jCadastroAluno = jCadastroAluno;
         this.conn = conn;
         this.jCadastroAluno.setVisible(true);
-        this.contJCadastroAluno = new ContJCadastroAluno(this.jCadastroAluno);
+        this.contJCadastroAluno = new ContJCadastroAluno(this.jCadastroAluno, this.conn);
     }
 }

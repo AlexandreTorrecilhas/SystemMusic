@@ -25,7 +25,7 @@ public class ControladorPaginaPrincipal {
             e ->{
                 this.mainPage.dispose();
                 this.jCadastroAluno = new JCadastroAluno();
-                this.controladorVisibilidade.inicializacaoJCadastroAluno(jCadastroAluno, conn);
+                this.controladorVisibilidade.inicializacaoJCadastroAluno(jCadastroAluno, this.conn);
             }
         );
     }
