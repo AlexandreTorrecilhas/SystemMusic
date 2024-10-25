@@ -38,3 +38,15 @@ CREATE TABLE telefone(
     num_tel			varchar(15) not null,
     constraint fk_te_rel_id_es FOREIGN KEY(rel_id_es) REFERENCES estudante(id_estudante)
 );
+
+/*Para evitar o cadastro de alunos com informações iguais,
+*adicionaremos um unique constraint baseado no nome e
+*data de nascimento.
+*/
+
+delete from estudante;
+
+set SQL_SAFE_UPDATEs = 0;
+
+alter table estudante
+	add constraint un_es_no_dt UNIQUE(nome, dtnasc);
