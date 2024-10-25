@@ -16,6 +16,10 @@ public class JCadastroAluno extends javax.swing.JFrame {
         return btnCadastrar;
     }
     
+    public JButton getBtnMenuPrincipal(){
+        return btnMenuPrincipal;
+    }
+    
     public JTextField getTxtNome(){
         return this.txtNome;
     }
