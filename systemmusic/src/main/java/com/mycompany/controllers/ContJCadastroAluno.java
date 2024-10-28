@@ -66,7 +66,7 @@ public class ContJCadastroAluno {
             this.estudante = new Estudante(txtNome.getText(), this.dataNascimento, cBoxInstrumento.getSelectedItem().toString(), txtTelefone.getText(), txtEmail.getText());
             
             try{
-                this.inserirEstudante = new InserirEstudante(this.estudante, this.conn); 
+                this.inserirEstudante = new InserirEstudante(this.estudante, this.conn);
             }catch(RuntimeException inserirEstudante){
                 throw new RuntimeException(inserirEstudante);
             }finally{
@@ -79,7 +79,6 @@ public class ContJCadastroAluno {
         });
         
         this.btnMenuPrincipal.addActionListener(e ->{
-            JOptionPane.showMessageDialog(null, "Worked");
             this.jCadastroAluno.dispose();
             this.controladorVisibilidade.inicializacaoTelaPrincipal(this.mainPage, this.conn);
         });
