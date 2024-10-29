@@ -7,16 +7,20 @@ package com.mycompany.dao;
     import java.sql.ResultSet;
 //Importing from this project
     import com.mycompany.user.Estudante;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
+    import java.sql.Statement;
+    import javax.swing.JOptionPane;
+    import com.mycompany.dao.InserirTelefone;
 
 public class InserirEstudante {
-    private ResultSet resultSet;
     private final String sql = "INSERT INTO estudante(nome, dtnasc, instrumento, email) " +
             "VALUES (?, ?, ?, ?)";
     private Estudante estudante;
     private Connection conn;
-    
+    //Variáveis id_estudante
+    private ResultSet resultSet;
+    private InserirTelefone inserirTelefone;
+    private int idEstudante;
+        
     public InserirEstudante(Estudante estudante, Connection conn){
         this.estudante = estudante;
         this.conn = conn;
@@ -28,13 +32,14 @@ public class InserirEstudante {
             preparedStatement.setString(3, estudante.getInstrumentoDesejado());
             preparedStatement.setString(4, estudante.getEmail());
             preparedStatement.execute();
-            //this.resultSet = preparedStatement.getGeneratedKeys();
-            
+            resultSet = preparedStatement.getGeneratedKeys();
             JOptionPane.showMessageDialog(null, "Estudante cadastrado com sucesso");
-            //resultSet.next();
-            //int resultado = resultSet.getInt(1);
-            //String resul = String.valueOf(resultado);
-            //JOptionPane.showMessageDialog(null, resul);
+            
+            if(resultSet.next()){
+                this.idEstudante = resultSet.getInt(1);
+                inserirTelefone = new InserirTelefone(this.conn, this.estudante.getTelefone(), idEstudante);
+            }else{}
+
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Não foi possível cadastrar o estudante");
             throw new RuntimeException(e);

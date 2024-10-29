@@ -15,6 +15,7 @@ public class Estudante {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.instrumentoDesejado = instrumentoDesejado;
+        this.telefone = telefone;
         this.email = email;
     }
     
@@ -48,6 +49,14 @@ public class Estudante {
     
     public String getInstrumentoDesejado(){
         return this.instrumentoDesejado;
+    }
+    
+    public void setTelefone(String telefone){
+        this.telefone = telefone;
+    }
+    
+    public String getTelefone(){
+        return this.telefone;
     }
     
     public void setEmail(String email){

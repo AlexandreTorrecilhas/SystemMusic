@@ -6,6 +6,7 @@ package com.mycompany.controllers;
     import com.mycompany.mainpage.MainPage;
     import com.mycompany.controladorvisibilidade.ControladorVisibilidade;
     import com.mycompany.dao.InserirEstudante;
+    import com.mycompany.dao.InserirTelefone;
    //Importing swing classes
     import javax.swing.JOptionPane;
     import javax.swing.JButton;
