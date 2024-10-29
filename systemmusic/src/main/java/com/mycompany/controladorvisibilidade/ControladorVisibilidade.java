@@ -9,12 +9,6 @@ package com.mycompany.controladorvisibilidade;
 
 public class ControladorVisibilidade {
     
-    protected MainPage mainPage;
-    protected JCadastroAluno jCadastroAluno;
-    protected ControladorPaginaPrincipal controladorPaginaPrincipal;
-    protected ContJCadastroAluno contJCadastroAluno;
-    protected Connection conn;
-    
     public ControladorVisibilidade(){}
     
     public void inicializacaoTelaLogin(TelaLogin telaLogin){
@@ -24,16 +18,12 @@ public class ControladorVisibilidade {
     
     
     public void inicializacaoTelaPrincipal(MainPage mainPage, Connection conn){
-        this.mainPage = mainPage;
-        this.conn = conn;
-        this.mainPage.setVisible(true);
-        this.controladorPaginaPrincipal = new ControladorPaginaPrincipal(this.mainPage, this.conn);
+        mainPage.setVisible(true);
+        new ControladorPaginaPrincipal(mainPage, conn);
     }
     
     public void inicializacaoJCadastroAluno(JCadastroAluno jCadastroAluno, Connection conn){
-        this.jCadastroAluno = jCadastroAluno;
-        this.conn = conn;
-        this.jCadastroAluno.setVisible(true);
-        this.contJCadastroAluno = new ContJCadastroAluno(this.jCadastroAluno, this.conn);
+        jCadastroAluno.setVisible(true);
+        new ContJCadastroAluno(jCadastroAluno, conn);
     }
 }
