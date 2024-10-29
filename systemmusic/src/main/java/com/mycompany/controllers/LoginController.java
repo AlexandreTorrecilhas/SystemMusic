@@ -1,6 +1,7 @@
 package com.mycompany.controllers;
 
     import javax.swing.JOptionPane;
+    import javax.swing.JButton;
     import java.sql.Connection;
     import java.sql.SQLException;
 
@@ -21,8 +22,12 @@ public class LoginController {
     
     public LoginController(TelaLogin telaLogin){
         this.telaLogin = telaLogin;
+    }
+    
+    public void fazerLogin(){
+        JButton btnLogin = telaLogin.getBtnLogin();
         
-        this.telaLogin.btnLogin.addActionListener(
+        btnLogin.addActionListener(
                 e ->{
                     try{
                         this.dadosLogin = telaLogin.getDadosLogin();
@@ -39,7 +44,4 @@ public class LoginController {
                 }
         );
     }
-    
-    
-    
 }

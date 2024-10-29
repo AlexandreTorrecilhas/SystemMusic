@@ -4,16 +4,21 @@ package com.mycompany.telalogin;
     import com.mycompany.connectionfactory.ConnectionFactory;
 
     import java.sql.SQLException;
+//importing javax
+    import javax.swing.JButton;
 
 public class TelaLogin extends javax.swing.JFrame {
 
     protected DadosLogin dadosLogin;
-
+    
     public TelaLogin() {
         initComponents();
     }
 
-
+    public JButton getBtnLogin(){
+        return this.btnLogin;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -119,7 +124,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtLogin;

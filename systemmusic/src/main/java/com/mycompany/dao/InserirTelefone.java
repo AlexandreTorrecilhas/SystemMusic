@@ -6,7 +6,7 @@ package com.mycompany.dao;
     import java.sql.SQLException;
     
 public class InserirTelefone {
-    private final String sql = "INSET INTO telefone (rel_id_es, num_tel) " +
+    private final String sql = "INSERT INTO telefone (rel_id_es, num_tel) " +
         "VALUES(?, ?)";
     private Connection conn;
     private String telefone;
@@ -22,6 +22,8 @@ public class InserirTelefone {
     public void inserirTelefone(){
         try{
             PreparedStatement preparedStatement = this.conn.prepareStatement(this.sql);
+            preparedStatement.setInt(1, this.id_estudante);
+            preparedStatement.setString(2, this.telefone);
             preparedStatement.execute();
         }catch(SQLException erroInserirTelefone){
             throw new RuntimeException(erroInserirTelefone);

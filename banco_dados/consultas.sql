@@ -1,4 +1,4 @@
-SET SQL_SAFE_UPDATES = 0;
+USE music_project;
 
 SET AUTOCOMMIT = 0;
 
@@ -50,3 +50,8 @@ set SQL_SAFE_UPDATEs = 0;
 
 alter table estudante
 	add constraint un_es_no_dt UNIQUE(nome, dtnasc);
+    
+SELECT e.nome, e.instrumento, tel.num_tel 
+		FROM estudante as e
+        INNER JOIN telefone as tel
+        ON e.id_estudante = tel.rel_id_es;

@@ -9,10 +9,8 @@ package com.mycompany.controladorvisibilidade;
 
 public class ControladorVisibilidade {
     
-    protected TelaLogin telaLogin;
     protected MainPage mainPage;
     protected JCadastroAluno jCadastroAluno;
-    protected LoginController loginController;
     protected ControladorPaginaPrincipal controladorPaginaPrincipal;
     protected ContJCadastroAluno contJCadastroAluno;
     protected Connection conn;
@@ -20,9 +18,8 @@ public class ControladorVisibilidade {
     public ControladorVisibilidade(){}
     
     public void inicializacaoTelaLogin(TelaLogin telaLogin){
-        this.telaLogin = telaLogin;
-        this.telaLogin.setVisible(true);
-        this.loginController = new LoginController(telaLogin);
+        telaLogin.setVisible(true);
+        new LoginController(telaLogin).fazerLogin();
     }
     
     
