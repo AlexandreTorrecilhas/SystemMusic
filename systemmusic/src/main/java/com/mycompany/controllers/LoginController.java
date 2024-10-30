@@ -13,35 +13,30 @@ package com.mycompany.controllers;
 
 public class LoginController {
     
-    private Connection conn;
     private TelaLogin telaLogin;
     private MainPage mainPage;
-    private DadosLogin dadosLogin;
     private ControladorVisibilidade controladorVisibilidade = new ControladorVisibilidade();
     private ConnectionFactory connectionFactory = new ConnectionFactory();
     
     public LoginController(TelaLogin telaLogin){
         this.telaLogin = telaLogin;
+        this.telaLogin.getBtnLogin().addActionListener(e->{
+            fazerLogin();
+        });
     }
     
     public void fazerLogin(){
-        JButton btnLogin = telaLogin.getBtnLogin();
-        
-        btnLogin.addActionListener(
-                e ->{
-                    try{
-                        this.dadosLogin = telaLogin.getDadosLogin();
-                        this.conn = this.connectionFactory.getConexao(this.dadosLogin);
-                        if(!conn.isClosed()){
-                            this.mainPage = new MainPage(dadosLogin);
-                            controladorVisibilidade.inicializacaoTelaPrincipal(this.mainPage, this.conn);
-                            this.telaLogin.dispose();
-                        }
-                     }catch(SQLException ex){
-                         JOptionPane.showMessageDialog(null, "Não foi possível conectar-se ao banco");
-                         throw new RuntimeException(ex);
-                     }
-                }
-        );
+        DadosLogin dadosLogin = telaLogin.getDadosLogin();
+        Connection conn = this.connectionFactory.getConexao(dadosLogin);
+        try{
+            if(!conn.isClosed()){
+                this.mainPage = new MainPage(dadosLogin);
+                controladorVisibilidade.inicializacaoTelaPrincipal(this.mainPage, conn);
+                this.telaLogin.dispose();                    
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar-se ao banco");
+            throw new RuntimeException(ex);
+        }
     }
 }
