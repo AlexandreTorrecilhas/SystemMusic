@@ -10,6 +10,7 @@ package com.mycompany.controllers;
     import com.mycompany.mainpage.MainPage;
     import com.mycompany.connectionfactory.ConnectionFactory;
     import com.mycompany.user.DadosLogin;
+import javax.swing.SwingUtilities;
 
 public class LoginController {
     
@@ -25,18 +26,24 @@ public class LoginController {
         });
     }
     
+    
     public void fazerLogin(){
-        DadosLogin dadosLogin = telaLogin.getDadosLogin();
+        DadosLogin dadosLogin = this.telaLogin.getDadosLogin();
         Connection conn = this.connectionFactory.getConexao(dadosLogin);
-        try{
-            if(!conn.isClosed()){
-                this.mainPage = new MainPage(dadosLogin);
-                controladorVisibilidade.inicializacaoTelaPrincipal(this.mainPage, conn);
-                this.telaLogin.dispose();                    
+        
+        if(this.telaLogin.getTxtLogin().getText().isEmpty() || this.telaLogin.getTxtSenha().getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor");
+        }else{
+            try{
+                if(!conn.isClosed()){
+                    this.mainPage = new MainPage(dadosLogin);
+                    controladorVisibilidade.inicializacaoTelaPrincipal(this.mainPage, conn);
+                    this.telaLogin.dispose();                    
+                }
+            }catch(SQLException ex){
+                JOptionPane.showMessageDialog(null, "Não foi possível conectar-se ao banco");
+                throw new RuntimeException(ex);
             }
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Não foi possível conectar-se ao banco");
-            throw new RuntimeException(ex);
         }
     }
 }

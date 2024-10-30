@@ -6,6 +6,7 @@ package com.mycompany.telalogin;
     import java.sql.SQLException;
 //importing javax
     import javax.swing.JButton;
+    import javax.swing.JTextField;
 
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -17,6 +18,14 @@ public class TelaLogin extends javax.swing.JFrame {
 
     public JButton getBtnLogin(){
         return this.btnLogin;
+    }
+    
+    public JTextField getTxtLogin(){
+        return txtLogin;
+    }
+    
+    public JTextField getTxtSenha(){
+        return txtSenha;
     }
     
     @SuppressWarnings("unchecked")
