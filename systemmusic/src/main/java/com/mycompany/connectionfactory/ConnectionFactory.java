@@ -1,7 +1,6 @@
 package com.mycompany.connectionfactory;
 
     import com.mycompany.user.DadosLogin;
-
     import java.sql.DriverManager;
     import java.sql.Connection;
     import java.sql.SQLException;

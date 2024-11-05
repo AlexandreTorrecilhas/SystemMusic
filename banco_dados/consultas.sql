@@ -55,3 +55,5 @@ SELECT e.nome, e.instrumento, tel.num_tel
 		FROM estudante as e
         INNER JOIN telefone as tel
         ON e.id_estudante = tel.rel_id_es;
+        
+USE alura;

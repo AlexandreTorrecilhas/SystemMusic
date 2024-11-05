@@ -1,7 +1,6 @@
 package com.mycompany.controllers;
 
     import javax.swing.JOptionPane;
-    import javax.swing.JButton;
     import java.sql.Connection;
     import java.sql.SQLException;
 
@@ -10,7 +9,6 @@ package com.mycompany.controllers;
     import com.mycompany.mainpage.MainPage;
     import com.mycompany.connectionfactory.ConnectionFactory;
     import com.mycompany.user.DadosLogin;
-import javax.swing.SwingUtilities;
 
 public class LoginController {
     
@@ -21,20 +19,14 @@ public class LoginController {
     
     public LoginController(TelaLogin telaLogin){
         this.telaLogin = telaLogin;
-        this.telaLogin.getBtnLogin().addActionListener(e->{
-            fazerLogin();
-        });
+        fazerLogin();
     }
     
-    
     public void fazerLogin(){
-        DadosLogin dadosLogin = this.telaLogin.getDadosLogin();
-        Connection conn = this.connectionFactory.getConexao(dadosLogin);
-        
-        if(this.telaLogin.getTxtLogin().getText().isEmpty() || this.telaLogin.getTxtSenha().getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Por favor");
-        }else{
+        this.telaLogin.getBtnLogin().addActionListener(e->{
             try{
+                DadosLogin dadosLogin = this.telaLogin.getDadosLogin();
+                Connection conn = this.connectionFactory.getConexao(dadosLogin);
                 if(!conn.isClosed()){
                     this.mainPage = new MainPage(dadosLogin);
                     controladorVisibilidade.inicializacaoTelaPrincipal(this.mainPage, conn);
@@ -44,6 +36,6 @@ public class LoginController {
                 JOptionPane.showMessageDialog(null, "Não foi possível conectar-se ao banco");
                 throw new RuntimeException(ex);
             }
-        }
+        });
     }
 }

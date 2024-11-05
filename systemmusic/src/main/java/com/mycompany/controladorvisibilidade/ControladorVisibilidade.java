@@ -13,7 +13,8 @@ public class ControladorVisibilidade {
     
     public void inicializacaoTelaLogin(TelaLogin telaLogin){
         telaLogin.setVisible(true);
-        new LoginController(telaLogin).fazerLogin();
+        new LoginController(telaLogin);
+        System.out.println("");
     }
     
     
