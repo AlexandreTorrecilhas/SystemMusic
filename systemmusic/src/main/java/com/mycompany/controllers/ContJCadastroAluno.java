@@ -20,8 +20,18 @@ package com.mycompany.controllers;
 public class ContJCadastroAluno {
     
     private JCadastroAluno jCadastroAluno = new JCadastroAluno();
+    private DadosLogin dadosLogin;
+    private JButton btnCadastrar;
     
     public ContJCadastroAluno(JCadastroAluno jCadastroAluno, DadosLogin dadosLogin){
-        
+        this.jCadastroAluno = jCadastroAluno;
+        this.dadosLogin = dadosLogin;
+        this.btnCadastrar = this.jCadastroAluno.getBtnCadastrar();
+    }
+    
+    private void cadastrarAluno(){
+        btnCadastrar.addActionListener(e->{
+            
+        });
     }
 }
