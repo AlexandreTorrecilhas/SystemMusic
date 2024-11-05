@@ -1,33 +1,40 @@
 package com.mycompany.controllers;
 
-    import javax.swing.JOptionPane;
-    import javax.swing.JButton;
     import com.mycompany.controladorvisibilidade.ControladorVisibilidade;
     import com.mycompany.mainpage.MainPage;
+    import com.mycompany.user.DadosLogin;
     import com.mycompany.mainpage.JCadastroAluno;
+    //importing javax
+    import javax.swing.JOptionPane;
+    import javax.swing.JButton;
 
-    import java.sql.Connection;
 
 public class ControladorPaginaPrincipal {
     
     private MainPage mainPage;
     private JCadastroAluno jCadastroAluno;
     private JButton btnCadastrar;
-    private Connection conn;
+    private DadosLogin dadosLogin;
     private ControladorVisibilidade controladorVisibilidade = new ControladorVisibilidade();
     
-    public ControladorPaginaPrincipal(MainPage mainPage, Connection conn){
+    public ControladorPaginaPrincipal(MainPage mainPage, DadosLogin dadosLogin){
         this.mainPage = mainPage;
-        this.conn = conn;
-        this.btnCadastrar = mainPage.getBtnCadastrar();
-        
-        this.btnCadastrar.addActionListener(
-            e ->{
-                this.mainPage.dispose();
-                this.jCadastroAluno = new JCadastroAluno();
-                this.controladorVisibilidade.inicializacaoJCadastroAluno(jCadastroAluno, this.conn);
-            }
-        );
+        this.dadosLogin = dadosLogin;
+        btnCadastrar = this.mainPage.getBtnCadastrar();
+        setLblLogin();
+        abrirTelaCadastro();
+    }
+    
+    protected void setLblLogin(){
+        this.mainPage.getLblLogin().setText(dadosLogin.login());
+    }
+    
+    protected void abrirTelaCadastro(){
+        btnCadastrar.addActionListener(e ->{
+            this.mainPage.dispose();
+            this.jCadastroAluno = new JCadastroAluno();
+            this.controladorVisibilidade.inicializacaoJCadastroAluno(jCadastroAluno, dadosLogin);
+        });
     }
     
     

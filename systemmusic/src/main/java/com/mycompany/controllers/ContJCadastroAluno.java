@@ -7,6 +7,7 @@ package com.mycompany.controllers;
     import com.mycompany.controladorvisibilidade.ControladorVisibilidade;
     import com.mycompany.dao.InserirEstudante;
     import com.mycompany.dao.InserirTelefone;
+    import com.mycompany.user.DadosLogin;
    //Importing swing classes
     import javax.swing.JOptionPane;
     import javax.swing.JButton;
@@ -23,6 +24,7 @@ package com.mycompany.controllers;
 
 public class ContJCadastroAluno {
     
+    private DadosLogin dadosLogin;
     private InserirEstudante inserirEstudante;
     private ControladorVisibilidade controladorVisibilidade = new ControladorVisibilidade();
     private MainPage mainPage = new MainPage();
@@ -40,7 +42,7 @@ public class ContJCadastroAluno {
     private LocalDate localDate;
     private DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
-    public ContJCadastroAluno(JCadastroAluno jCadastroAluno, Connection conn){
+    public ContJCadastroAluno(JCadastroAluno jCadastroAluno, DadosLogin dadosLogin){
         
         this.jCadastroAluno = jCadastroAluno;
         this.jCadastroAluno = jCadastroAluno;
@@ -81,7 +83,7 @@ public class ContJCadastroAluno {
         
         this.btnMenuPrincipal.addActionListener(e ->{
             this.jCadastroAluno.dispose();
-            this.controladorVisibilidade.inicializacaoTelaPrincipal(this.mainPage, this.conn);
+            this.controladorVisibilidade.inicializacaoTelaPrincipal(this.mainPage, this.dadosLogin);
         });
     }
 }

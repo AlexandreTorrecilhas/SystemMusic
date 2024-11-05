@@ -2,6 +2,7 @@ package com.mycompany.mainpage;
 
     import com.mycompany.user.DadosLogin;
     import javax.swing.JButton;
+    import javax.swing.JLabel;
 
     import java.sql.Connection;
 
@@ -14,9 +15,8 @@ public class MainPage extends javax.swing.JFrame {
         initComponents();
     }
     
-    public MainPage(DadosLogin dadosLogin){
-        initComponents();
-        lblLogin.setText(dadosLogin.login());
+    public JLabel getLblLogin(){
+        return lblLogin;
     }
     
     public JButton getBtnCadastrar(){
