@@ -23,3 +23,25 @@
 hs_err_pid*
 replay_pid*
 /systemmusic/target/
+
+# Node modules (The most important one!)
+node_modules/
+
+# Angular build output
+/dist/
+/.angular/
+
+# Logs and system files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+# IDEs and Tools
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
