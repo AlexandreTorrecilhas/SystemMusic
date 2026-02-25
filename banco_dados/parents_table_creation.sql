@@ -14,4 +14,6 @@ CREATE TABLE maestro_lider.responsavel(
 
 --GRANT REFERENCES ON [OTHER_SCHEMA].pessoa TO maestro_lider;
 
+ALTER TABLE maestro_lider.responsavel MODIFY(cpf VARCHAR(11) NOT NULL, telefone VARCHAR(13) NOT NULL);
+
 DESC pessoa;
