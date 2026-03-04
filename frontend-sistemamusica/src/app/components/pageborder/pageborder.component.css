@@ -1,6 +1,7 @@
 .page-border{
-    border-style: 1px solid blue;
-    background-color: black;
-    height: 100;
+    border: 3px solid blue;
+    background-color: orange;
+    margin: 0px;
+    height: 100%;
     width: 100;
 }
